@@ -5,7 +5,7 @@ const mainRoutes = require("./routes/mainRoutes.js")
 const app = express();
 
 const corsOptions = {
-    origin: "localhost:5000",
+    origin: "localhost:5500",
     optionsSuccessStatus: 200,
 };
 
