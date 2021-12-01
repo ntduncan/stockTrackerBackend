@@ -6,11 +6,13 @@ api_key.apiKey = process.env.FINNHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi()
 
 const getOneStock = (req, res) => {
+    // console.log(req.body.ticker);
     finnhubClient.quote(req.body.ticker, (error, data, response) => {
+        console.log(response);
         res.json({
-            ticker: ticker, 
-            current: data.c,
-            opening: data.o,
+            ticker: req.body.ticker, 
+            currentPrice: data.c,
+            openingPrice: data.o,
             previousClosePrice: data.pc,
         });
     });
@@ -24,8 +26,8 @@ const getManyStocks = (req, res) => {
             finnhubClient.quote(ticker, (error, data, response) => {
                 const formattedData = {
                     ticker: ticker, 
-                    current: data.c,
-                    opening: data.o,
+                    currentPrice: data.c,
+                    openingPrice: data.o,
                     previousClosePrice: data.pc,
                 }
                 tickerData.push(formattedData);
