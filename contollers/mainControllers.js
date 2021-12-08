@@ -6,16 +6,31 @@ api_key.apiKey = process.env.FINNHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi()
 
 const getOneStock = (req, res) => {
-    // console.log(req.body.ticker);
+    const lastWeek = new Date(Date.now() - (7 * 24 * 3600 * 1000));
+    const today = new Date();
+
+    const startDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+    const endDate = `${lastWeek.getFullYear()}-${lastWeek.getMonth()}-${lastWeek.getDate()}`;
+
+    let package = {}
+
+    // Get Stock Price Info
     finnhubClient.quote(req.body.ticker, (error, data, response) => {
-        console.log(response);
-        res.json({
+        package = {
             ticker: req.body.ticker, 
             currentPrice: data.c,
             openingPrice: data.o,
-            previousClosePrice: data.pc,
-        });
+            previousClosePrice: data.pc}
+
+            // Get News
+            finnhubClient.companyNews(req.body.ticker, startDate, endDate, (error, news, response) => {
+                package.companyNews = news.slice(1,11);
+                console.log(news)
+                res.json(package);
+            });
     });
+
+
 }
 
 const getManyStocks = (req, res) => {
