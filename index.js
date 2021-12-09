@@ -3,9 +3,16 @@ const cors = require("cors");
 const mainRoutes = require("./routes/mainRoutes.js")
 
 const app = express();
-
+const whitelist =["http://127.0.0.1:5500", "<github link>"]
 const corsOptions = {
-    origin: "http://stock-watcher-tool.herokuapp.com",
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+          callback(null, true)
+        } else {
+          callback(new Error('Not allowed by CORS'))
+        }
+      }
+    ,
     optionsSuccessStatus: 200,
 };
 
