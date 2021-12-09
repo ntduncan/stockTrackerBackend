@@ -5,7 +5,7 @@ const mainRoutes = require("./routes/mainRoutes.js")
 const app = express();
 
 const corsOptions = {
-    origin: "http://stock-tracker-app.herokuapp.com",
+    origin: "http://stock-tracker-tool.herokuapp.com/",
     optionsSuccessStatus: 200,
 };
 
