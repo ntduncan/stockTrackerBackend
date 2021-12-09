@@ -12,7 +12,22 @@ const corsOptions = {
 // Middleware
 app
   .use(cors(corsOptions))
-
+  .use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader("Access-Control-Allow-Origin", "*");
+ 
+    // Request methods you wish to allow
+    res.setHeader(
+       "Access-Control-Allow-Methods",
+       "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    );
+ 
+    // Request headers you wish to allow
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+ 
+    // Pass to next layer of middleware
+    next();
+ });
 // Routes
 app
 .use(express.urlencoded({extended: false}))
