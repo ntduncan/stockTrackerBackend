@@ -13,6 +13,7 @@ const getOneStock = (req, res) => {
     const endDate = `${lastWeek.getFullYear()}-${lastWeek.getMonth()}-${lastWeek.getDate()}`;
 
     let package = {}
+    console.log(req.body);
 
     // Get Stock Price Info
     finnhubClient.quote(req.body.ticker, (error, data, response) => {
