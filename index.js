@@ -19,22 +19,22 @@ const corsOptions = {
 // Middleware
 app
   .use(cors())
-  .use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+//   .use(function (req, res, next) {
+//     // Website you wish to allow to connect
+//     res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
  
-    // Request methods you wish to allow
-    res.setHeader(
-       "Access-Control-Allow-Methods",
-       "GET, POST"
-    );
+//     // Request methods you wish to allow
+//     res.setHeader(
+//        "Access-Control-Allow-Methods",
+//        "GET, POST"
+//     );
  
-    // Request headers you wish to allow
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//     // Request headers you wish to allow
+//     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
  
-    // Pass to next layer of middleware
-    next();
- });
+//     // Pass to next layer of middleware
+//     next();
+//  });
 // Routes
 app
 .use(express.urlencoded({extended: false}))
