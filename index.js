@@ -18,7 +18,7 @@ const corsOptions = {
 
 // Middleware
 app
-  .use(cors(corsOptions))
+  .use(cors())
   .use(function (req, res, next) {
     // Website you wish to allow to connect
     res.setHeader("Access-Control-Allow-Origin", "*");
