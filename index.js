@@ -5,7 +5,7 @@ const mainRoutes = require("./routes/mainRoutes.js")
 const app = express();
 
 const corsOptions = {
-    origin: "http://stock-tracker-tool.herokuapp.com/",
+    origin: "http://stock-tracker-tool.herokuapp.com",
     optionsSuccessStatus: 200,
 };
 
@@ -19,7 +19,7 @@ app
     // Request methods you wish to allow
     res.setHeader(
        "Access-Control-Allow-Methods",
-       "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+       "GET, POST"
     );
  
     // Request headers you wish to allow
